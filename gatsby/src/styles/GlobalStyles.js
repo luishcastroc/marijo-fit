@@ -1,4 +1,13 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -30,7 +39,13 @@ const GlobalStyles = createGlobalStyle`
   .pos-sticky {
     position: sticky;
     top:0;
-    transition: all .8sec ease-in;
+    animation: .7s ${fadeIn} ease-in;
+  }
+
+  .layout {
+    padding-top: 120px;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 `;
 

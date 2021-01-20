@@ -11,7 +11,6 @@ export default function Layout({ children }) {
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 90;
-      console.log('scrollValue: ', window.scrollY);
       if (isScrolled) {
         setScrolled(true);
       } else {

@@ -1,11 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
 import font from '../assets/fonts/Raleway-Regular.ttf';
+import fontShadow from '../assets/fonts/ShadowsIntoLight-Regular.ttf';
 
 const Typography = createGlobalStyle`
   @font-face {
     font-family: 'Raleway';
     src: url(${font});
+  }
+
+  @font-face {
+    font-family: 'Shadows Into Light', cursive;
+    src: url(${fontShadow});
   }
 
   html {
