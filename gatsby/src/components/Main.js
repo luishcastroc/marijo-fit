@@ -5,8 +5,8 @@ import healthImg from '../assets/images/diet-plan.svg';
 
 const MainStyle = styled.main`
   padding-top: 130px;
-  width: 100vw;
   height: 100vh;
+  width: 100%;
   background-image: url('${bg}');
   background-position: center;
   background-repeat: no-repeat;

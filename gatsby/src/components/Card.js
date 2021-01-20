@@ -111,7 +111,7 @@ export default function Card({ card }) {
     <CardStyles bgImg={card.bgImg}>
       <div className="info-container">
         <div className="img-container">
-          <img src={card.img} alt="" />
+          <img src={card.img} alt={card.title} />
         </div>
         <div className="description">
           <h3>{card.title}</h3>
