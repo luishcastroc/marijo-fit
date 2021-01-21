@@ -29,7 +29,7 @@ const Cards = [
 
 const CardSectionStyles = styled.section`
   width: 100%;
-  padding: 5rem;
+  padding: 3rem 3.5rem;
   background-color: var(--white);
   display: grid;
   --columns: 3;
@@ -50,10 +50,13 @@ const CardSectionStyles = styled.section`
 
 export default function CardSection() {
   return (
-    <CardSectionStyles>
-      {Cards.map((card) => (
-        <Card card={card} key={card.title} />
-      ))}
-    </CardSectionStyles>
+    <>
+      <h2 className="section-header">Servicios</h2>
+      <CardSectionStyles>
+        {Cards.map((card) => (
+          <Card card={card} key={card.title} />
+        ))}
+      </CardSectionStyles>
+    </>
   );
 }

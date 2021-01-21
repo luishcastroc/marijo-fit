@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Nav from './Nav';
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
+import Footer from './Footer';
 
 export default function Layout({ children }) {
   // determined if page has scrolled and if the view is on mobile
@@ -31,6 +32,7 @@ export default function Layout({ children }) {
       <Typography />
       <Nav scrolled={scrolled} />
       {children}
+      <Footer />
     </>
   );
 }

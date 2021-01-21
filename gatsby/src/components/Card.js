@@ -29,6 +29,7 @@ const CardStyles = styled.div`
 
   .info-container {
     position: absolute;
+    max-height: 80px;
     bottom: 0;
     width: 100%;
     display: flex;
@@ -55,8 +56,7 @@ const CardStyles = styled.div`
 
     .img-container {
       flex-basis: 80px;
-      height: 100%;
-      min-height: 80px;
+      height: 80px;
       background-color: var(--pastel-green);
       display: flex;
       justify-content: center;

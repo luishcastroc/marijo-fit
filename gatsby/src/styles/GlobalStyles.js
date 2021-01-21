@@ -47,6 +47,23 @@ const GlobalStyles = createGlobalStyle`
     padding-left: 5rem;
     padding-right: 5rem;
   }
+
+  .section-header {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 3rem;
+    color: var(--pastel-green);
+    text-align: center;
+
+    &::before,
+    &::after {
+      display: inline-block;
+      content: "";
+      border-top: .3rem solid var(--pastel-green);
+      width: 4rem;
+      margin: 0 1rem;
+      transform: translateY(-1rem);
+      }
+  }
 `;
 
 export default GlobalStyles;
