@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NewsStyles = styled.section`
-  height: 150px;
+  height: 550px;
   background-color: var(--white);
 `;
 

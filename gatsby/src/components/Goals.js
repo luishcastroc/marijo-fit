@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const GoalsStyles = styled.div`
-  height: 150px;
+  height: 350px;
   background-color: var(--cape-cod);
 `;
 

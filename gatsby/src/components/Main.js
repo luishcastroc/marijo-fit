@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import bg from '../assets/images/bg.jpg';
 
 const MainStyle = styled.main`
-  padding-top: 130px;
-  height: 100vh;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  height: 100%;
   width: 100%;
   background-image: url('${bg}');
   background-position: center;
