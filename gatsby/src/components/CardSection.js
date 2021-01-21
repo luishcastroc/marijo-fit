@@ -37,6 +37,7 @@ const CardSectionStyles = styled.section`
   gap: 2rem;
   align-content: center;
   justify-items: center;
+  position: relative;
 
   @media (max-width: 768px) {
     --columns: 1;
@@ -45,6 +46,17 @@ const CardSectionStyles = styled.section`
 
   @media (max-width: 1024px) and (min-width: 769px) {
     --columns: 2;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-top: solid 50px var(--white);
+    border-left: solid 50px transparent;
+    border-right: solid 50px transparent;
   }
 `;
 

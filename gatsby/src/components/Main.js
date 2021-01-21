@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import bg from '../assets/images/bg.jpg';
-import healthImg from '../assets/images/diet-plan.svg';
 
 const MainStyle = styled.main`
   padding-top: 130px;

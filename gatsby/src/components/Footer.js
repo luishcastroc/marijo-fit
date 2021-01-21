@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterStyles = styled.footer`
+  min-height: 250px;
   background-color: var(--cape-cod);
   display: grid;
 `;

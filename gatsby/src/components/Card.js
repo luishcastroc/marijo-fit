@@ -56,6 +56,7 @@ const CardStyles = styled.div`
 
     .img-container {
       flex-basis: 80px;
+      width: 80px;
       height: 80px;
       background-color: var(--pastel-green);
       display: flex;
@@ -92,6 +93,7 @@ const CardStyles = styled.div`
 
     .img-overlay-container {
       flex-basis: 80px;
+      width: 80px;
       height: 100%;
       min-height: 80px;
       background-color: var(--pastel-green);
@@ -119,7 +121,7 @@ export default function Card({ card }) {
       </div>
       <div className="overlay-container">
         <div className="img-overlay-container">
-          <img src={card.img} alt="" />
+          <img src={card.img} alt={card.title} />
         </div>
         <div className="overlay-description">
           <h3>{card.title}</h3>
