@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ScrollAnimation from 'react-animate-on-scroll';
 import Card from './Card';
 import { Images } from '../utils/Images';
 
@@ -63,7 +64,13 @@ const CardSectionStyles = styled.section`
 export default function CardSection() {
   return (
     <>
-      <h2 className="section-header">Servicios</h2>
+      <ScrollAnimation
+        animateIn="flipInY"
+        offset={250}
+        animatePreScroll={false}
+      >
+        <h2 className="section-header">Servicios</h2>
+      </ScrollAnimation>
       <CardSectionStyles>
         {Cards.map((card) => (
           <Card card={card} key={card.title} />

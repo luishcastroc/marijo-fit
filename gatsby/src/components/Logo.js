@@ -4,8 +4,8 @@ import Img from 'gatsby-image';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 
 const LogoWrap = styled.div`
-  margin: auto 0;
-  flex: 0 1 18rem;
+  ${(props) => (props.footer === 'true' ? '' : 'margin: auto 0')};
+  ${(props) => (props.footer === 'true' ? '' : 'flex: 0 1 18rem')};
   width: 18rem;
 
   @media (max-width: 768px) and (orientation: landscape) {
@@ -13,7 +13,7 @@ const LogoWrap = styled.div`
     width: 16rem;
   }
 `;
-export default function Logo() {
+export default function Logo({ footer }) {
   const data = useStaticQuery(graphql`
     query {
       file(name: { eq: "logo" }, extension: { eq: "png" }) {
@@ -27,7 +27,7 @@ export default function Logo() {
   `);
 
   return (
-    <LogoWrap as={Link} to="/">
+    <LogoWrap as={Link} to="/" footer={footer}>
       <Img fluid={data.file.childImageSharp.fluid} alt="logo" />
     </LogoWrap>
   );
