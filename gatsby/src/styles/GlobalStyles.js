@@ -37,9 +37,10 @@ const GlobalStyles = createGlobalStyle`
     }
     
     &[aria-current='page'] {
-    color: var(--pastel-green);
-    ::after {
-      width: 100%;
+      color: var(--pastel-green);
+      ::after {
+        width: 100%;
+        }
     }
   }
 
@@ -74,9 +75,9 @@ const GlobalStyles = createGlobalStyle`
       width: 4rem;
       margin: 0 1rem;
       transform: translateY(-1rem);
-    }
+      }
   }
-  }
+  
 
   button {
     max-width: 150px;
