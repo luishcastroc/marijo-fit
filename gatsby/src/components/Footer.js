@@ -14,6 +14,13 @@ const FooterStyles = styled.footer`
   grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
   gap: 4rem;
 
+  a {
+    :visited,
+    :active {
+      color: var(--pastel-green);
+    }
+  }
+
   .general-info {
     display: flex;
     flex-direction: column;

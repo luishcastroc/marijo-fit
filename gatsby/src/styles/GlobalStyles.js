@@ -31,10 +31,7 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
-
-    :visited {
-      color:var(--pastel-green);
-    }
+    color: var(--white);
     
     &[aria-current='page'] {
       color: var(--pastel-green);
@@ -90,7 +87,6 @@ const GlobalStyles = createGlobalStyle`
     border: none;
     color: var(--white);
     font-size: 1.2rem;
-    line-height: 1.2rem;
     width: 150px;
 
     &:hover{
@@ -100,7 +96,7 @@ const GlobalStyles = createGlobalStyle`
 
     &.secondary{
       background-color: transparent;
-      border: 1px solid var(--white);
+      border: 2px solid var(--white);
 
       &:hover {
         background-color:white;
