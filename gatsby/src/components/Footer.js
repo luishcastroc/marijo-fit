@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import ScrollAnimation from 'react-animate-on-scroll';
+import { navigate } from 'gatsby';
 import Logo from './Logo';
 
 const FooterStyles = styled.footer`
@@ -16,6 +18,25 @@ const FooterStyles = styled.footer`
     display: flex;
     flex-direction: column;
   }
+
+  .links {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      align-self: center;
+      font-family: 'Shadows Into Light', cursive;
+      font-weight: 400;
+      font-size: 1.3rem;
+    }
+
+    .links-container {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 `;
 
 export default function Footer() {
@@ -24,10 +45,42 @@ export default function Footer() {
     <FooterStyles>
       <div className="general-info">
         <Logo footer={footer} />
-        <p>
-          Tu transformación es mi pasión, dejame proveerte de las herramientas
-          para transformarte en la mejor versión de ti mismo.
-        </p>
+        <ScrollAnimation
+          animateIn="flipInY"
+          offset={250}
+          animatePreScroll={false}
+        >
+          <p>
+            Tu transformación es mi pasión, dejame proveerte de las herramientas
+            para transformarte en la mejor versión de ti mismo, contactame y
+            podremos diseñar el programa perfecto que se acople a tus
+            necesidades.
+          </p>
+          <button
+            className="square"
+            type="button"
+            onClick={() => {
+              navigate('/contacto');
+            }}
+          >
+            Contactame
+          </button>
+        </ScrollAnimation>
+      </div>
+      <div className="links">
+        <h4>Enlaces de Interés</h4>
+        <div className="links-container">
+          <li>
+            <a
+              href="https://www.who.int/topics/nutrition/es/"
+              className="nutri-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              OMS
+            </a>
+          </li>
+        </div>
       </div>
     </FooterStyles>
   );

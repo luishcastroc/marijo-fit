@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import ScrollAnimation from 'react-animate-on-scroll';
+import { navigate } from 'gatsby';
 import bg from '../assets/images/bg.jpg';
 
 const MainStyle = styled.main`
@@ -38,6 +40,15 @@ const MainCard = styled.div`
     width: 35rem;
     font-size: 3.5rem;
     color: var(--white);
+  }
+
+  .button-container {
+    width: 60%;
+    display: grid;
+    --columns: 2;
+    grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
+    gap: 0.5rem;
+    margin-top: 20px;
   }
 
   @media (max-width: 1024px) and (min-width: 769px) {
@@ -80,8 +91,29 @@ export default function Main() {
   return (
     <MainStyle>
       <MainCard>
-        <h4>Motivandote para tener un estilo de vida más saludable.</h4>
-        <h2>Hola, Soy Marijo tu próxima Nutrióloga.</h2>
+        <ScrollAnimation animateIn="bounceInRight">
+          <h4>Motivandote para tener un estilo de vida más saludable.</h4>
+          <h2>Hola, Soy Marijo tu próxima Nutrióloga.</h2>
+          <div className="button-container">
+            <button
+              type="button"
+              onClick={() => {
+                navigate('/quien-es-marijo');
+              }}
+            >
+              Conoce más
+            </button>
+            <button
+              className="secondary"
+              type="button"
+              onClick={() => {
+                navigate('/contacto');
+              }}
+            >
+              Contacto
+            </button>
+          </div>
+        </ScrollAnimation>
       </MainCard>
     </MainStyle>
   );

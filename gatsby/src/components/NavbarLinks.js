@@ -43,7 +43,7 @@ export default function NavbarLinks() {
     <>
       <NavItem to="/">Inicio</NavItem>
       <NavItem to="/blog">Blog</NavItem>
-      <NavItem to="/quien-es-majo">Quien es Marijo</NavItem>
+      <NavItem to="/quien-es-marijo">Quien es Marijo</NavItem>
       <NavItem to="/contacto">Contacto</NavItem>
     </>
   );
