@@ -32,5 +32,12 @@ export default {
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'post' }] }],
     },
+    {
+      name: 'links',
+      title: 'Enlaces de Interés',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'link'}]}],
+      validation: Rule => Rule.max(6),
+    }
   ],
 };

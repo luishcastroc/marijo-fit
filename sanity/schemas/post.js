@@ -20,6 +20,11 @@ export default {
       },
     },
     {
+      name: 'subtitle',
+      title: 'Introducción',
+      type: 'text'
+    },
+    {
       name: 'author',
       title: 'Autor',
       type: 'reference',

@@ -37,6 +37,7 @@
     "gatsby-source-filesystem": "^2.9.0",
     "gatsby-source-sanity": "^6.0.4",
     "gatsby-transformer-sharp": "^2.10.0",
+    "isomorphic-fetch": "^3.0.0",
     "react": "^16.13.1",
     "react-animate-on-scroll": "^2.1.5",
     "react-dom": "^16.13.1",

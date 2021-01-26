@@ -50,7 +50,7 @@ const FooterStyles = styled.footer`
   }
 `;
 
-export default function Footer() {
+export default function Footer({ links }) {
   const footer = 'true';
   return (
     <FooterStyles>
@@ -81,26 +81,20 @@ export default function Footer() {
       <div className="links">
         <h4>Enlaces de Interés</h4>
         <div className="links-container">
-          <li>
-            <a
-              href="https://www.who.int/topics/nutrition/es/"
-              className="nutri-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              OMS
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.incmnsz.mx/opencms/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="nutri-link"
-            >
-              INCMNSZ
-            </a>
-          </li>
+          {links &&
+            links.map(({ link, _id, title }) => (
+              <li key={_id}>
+                <a
+                  href={link}
+                  title={title}
+                  className="nutri-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {title}
+                </a>
+              </li>
+            ))}
         </div>
       </div>
     </FooterStyles>
