@@ -46,7 +46,16 @@ const FooterStyles = styled.footer`
       margin-top: 10px;
       display: grid;
       grid-template-columns: repeat(2, minmax(110px, 1fr));
+      justify-items: center;
     }
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    --columns: 2;
+  }
+
+  @media (max-width: 768px) {
+    --columns: 1;
   }
 `;
 

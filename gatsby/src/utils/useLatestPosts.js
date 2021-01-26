@@ -22,6 +22,8 @@ export default function useLatestPosts() {
                 slug {
                   current
                 }
+                title
+                subtitle
                 author {
                   name
                 }
@@ -33,6 +35,7 @@ export default function useLatestPosts() {
                     }
                   }
                 }
+                bodyRaw
               }
             }
           }
