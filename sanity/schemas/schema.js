@@ -9,6 +9,7 @@ import category from './category';
 import post from './post';
 import author from './author';
 import siteSettings from './siteSettings';
+import link from './link';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -16,5 +17,5 @@ export default createSchema({
   name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([blockContent, category, post, author, siteSettings]),
+  types: schemaTypes.concat([blockContent, category, post, author, siteSettings, link]),
 });

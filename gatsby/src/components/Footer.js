@@ -31,6 +31,10 @@ const FooterStyles = styled.footer`
     display: flex;
     flex-direction: column;
 
+    li {
+      margin-left: 2rem;
+    }
+
     h4 {
       align-self: center;
       font-family: 'Shadows Into Light', cursive;
@@ -41,7 +45,7 @@ const FooterStyles = styled.footer`
     .links-container {
       margin-top: 10px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(110px, 1fr));
     }
   }
 `;
@@ -85,6 +89,16 @@ export default function Footer() {
               rel="noopener noreferrer"
             >
               OMS
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.incmnsz.mx/opencms/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nutri-link"
+            >
+              INCMNSZ
             </a>
           </li>
         </div>
