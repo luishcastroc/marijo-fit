@@ -27,12 +27,6 @@ export default {
       },
     },
     {
-      name: 'posts',
-      title: 'Publicaciones',
-      type: 'array',
-      of: [{ type: 'reference', to: [{ type: 'post' }] }],
-    },
-    {
       name: 'links',
       title: 'Enlaces de Interés',
       type: 'array',

@@ -15,28 +15,25 @@ export default function useLatestPosts() {
       body: JSON.stringify({
         query: gql`
           query {
-            SiteSettings(id: "downtown") {
-              posts {
-                _id
-                _createdAt
-                slug {
-                  current
-                }
-                title
-                subtitle
-                author {
-                  name
-                }
-                mainImage {
-                  asset {
-                    url
-                    metadata {
-                      lqip
-                    }
+            allPost(limit: 2, sort: { publishedAt: DESC }) {
+              _id
+              slug {
+                current
+              }
+              title
+              subtitle
+              author {
+                name
+              }
+              mainImage {
+                asset {
+                  url
+                  metadata {
+                    lqip
                   }
                 }
-                bodyRaw
               }
+              bodyRaw
             }
           }
         `,
@@ -44,7 +41,8 @@ export default function useLatestPosts() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setPosts(res.data.SiteSettings.posts);
+        console.log(res.data.allPost);
+        setPosts(res.data.allPost);
       });
   }, []);
 
