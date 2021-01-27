@@ -25,6 +25,7 @@ export default function useLatestPosts() {
               author {
                 name
               }
+              publishedAt
               mainImage {
                 asset {
                   url

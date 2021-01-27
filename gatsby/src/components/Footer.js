@@ -43,6 +43,7 @@ const FooterStyles = styled.footer`
     }
 
     .links-container {
+      width: 400px;
       margin-top: 25px;
       display: grid;
       grid-template-columns: repeat(2, minmax(110px, 1fr));

@@ -6,3 +6,8 @@ export function wrapPageElement({ element, props }) {
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <Layout {...props}>{element}</Layout>;
 }
+
+export function shouldUpdateScroll() {
+  window.scrollTo(0, 0);
+  return false;
+}

@@ -17,6 +17,7 @@ const GlobalStyles = createGlobalStyle`
     --cape-cod-70: #323737b3;
     --ghost: #C0C7D2;
     --white: #ffffff;
+    --grey: #efefef;
   }
 
   * {
@@ -56,6 +57,11 @@ const GlobalStyles = createGlobalStyle`
     padding-top: 120px;
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .gatsby-image-wrapper img[src*=base64\\,] {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;
   }
 
   .section-header {
