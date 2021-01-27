@@ -43,10 +43,9 @@ const FooterStyles = styled.footer`
     }
 
     .links-container {
-      margin-top: 10px;
+      margin-top: 25px;
       display: grid;
       grid-template-columns: repeat(2, minmax(110px, 1fr));
-      justify-items: center;
     }
   }
 

@@ -5,7 +5,7 @@ async function turnPostsIntoPages({ graphql, actions }) {
 
   const { data } = await graphql(`
     query {
-      posts: allSanityPost {
+      posts: allSanityPost(sort: { fields: publishedAt, order: DESC }) {
         nodes {
           _id
           title
