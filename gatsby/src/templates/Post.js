@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import SEO from '../components/SEO';
 
 const BlockContent = require('@sanity/block-content-to-react');
 
@@ -73,16 +74,19 @@ const PostStyles = styled.div`
 export default function Post({ data }) {
   const { post } = data;
   return (
-    <PostStyles>
-      <div className="header">
-        <h1>{post.title}</h1>
-        <strong>
-          <sub>Autor: {post.author.name}</sub>
-        </strong>
-      </div>
-      <Img fluid={post.mainImage.asset.fluid} alt={`${post.title} Image`} />
-      <BlockContent blocks={post.body} />
-    </PostStyles>
+    <>
+      <SEO title={post.title} />
+      <PostStyles>
+        <div className="header">
+          <h1>{post.title}</h1>
+          <strong>
+            <sub>Autor: {post.author.name}</sub>
+          </strong>
+        </div>
+        <Img fluid={post.mainImage.asset.fluid} alt={`${post.title} Image`} />
+        <BlockContent blocks={post.body} />
+      </PostStyles>
+    </>
   );
 }
 
