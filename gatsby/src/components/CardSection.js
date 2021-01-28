@@ -30,7 +30,7 @@ const Cards = [
 
 const CardSectionStyles = styled.section`
   width: 100%;
-  padding: 3rem 3.5rem;
+  padding: 3rem 6rem;
   background-color: var(--white);
   display: grid;
   --columns: 3;
@@ -47,6 +47,7 @@ const CardSectionStyles = styled.section`
 
   @media (max-width: 1024px) and (min-width: 769px) {
     --columns: 2;
+    padding: 3rem 4rem;
   }
 
   &:after {

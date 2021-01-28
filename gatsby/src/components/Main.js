@@ -5,8 +5,7 @@ import { navigate } from 'gatsby';
 import bg from '../assets/images/bg.jpg';
 
 const MainStyle = styled.main`
-  padding-top: 8rem;
-  padding-bottom: 5rem;
+  padding: 8rem 6rem 5rem;
   height: 100%;
   width: 100%;
   background-image: url('${bg}');
@@ -15,11 +14,19 @@ const MainStyle = styled.main`
   background-size: cover;
   display: flex;
   justify-content: center;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    padding: 8rem 4rem 10rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8rem 1rem 3rem;
+  }
 `;
 
 const MainCard = styled.div`
   height: 80vh;
-  width: 70vw;
+  width: 100%;
   background-color: var(--cape-cod-70);
   display: flex;
   flex-direction: column;
@@ -52,7 +59,6 @@ const MainCard = styled.div`
   }
 
   @media (max-width: 1024px) and (min-width: 769px) {
-    width: 95%;
     padding: 0 6rem;
 
     h4 {
@@ -72,7 +78,6 @@ const MainCard = styled.div`
 
   @media (max-width: 768px) {
     justify-content: flex-start;
-    width: 95%;
     padding: 10rem 1rem;
 
     h4 {

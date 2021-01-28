@@ -7,7 +7,7 @@ import LoadingGrid from './LoadingGrid';
 const PostsListStyles = styled.section`
   height: 550px;
   width: 100%;
-  padding: 1.5 3.5rem 3rem 3.5rem;
+  padding: 1.5rem 6rem 3rem;
   background-color: var(--white);
   display: grid;
   --columns: 2;
@@ -17,11 +17,13 @@ const PostsListStyles = styled.section`
   justify-content: center;
 
   @media (max-width: 1024px) and (min-width: 769px) {
-    padding: 3rem 3rem;
+    padding: 3rem 4rem;
   }
 
   @media (max-width: 768px) {
     --columns: 1;
+    height: 100%;
+    padding: 1.5rem 1rem;
   }
 `;
 

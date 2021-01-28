@@ -6,7 +6,7 @@ import Logo from './Logo';
 
 const FooterStyles = styled.footer`
   min-height: 350px;
-  padding: 1rem 5vw;
+  padding: 1rem 6rem;
   background-color: var(--cape-cod);
   color: var(--white);
   display: grid;
@@ -52,10 +52,12 @@ const FooterStyles = styled.footer`
 
   @media (max-width: 1024px) and (min-width: 769px) {
     --columns: 2;
+    padding: 1rem 4rem;
   }
 
   @media (max-width: 768px) {
     --columns: 1;
+    padding: 1rem;
   }
 `;
 
