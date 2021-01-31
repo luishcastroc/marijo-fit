@@ -2,6 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 import { navigate } from 'gatsby';
+import {
+  FaRegEnvelope,
+  FaTwitter,
+  FaFacebookF,
+  FaPhoneAlt,
+} from 'react-icons/fa';
 import Logo from './Logo';
 
 const FooterStyles = styled.footer`
@@ -11,6 +17,7 @@ const FooterStyles = styled.footer`
   color: var(--white);
   display: grid;
   --columns: 4;
+  --contact: 4;
   grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
   gap: 4rem;
 
@@ -26,6 +33,13 @@ const FooterStyles = styled.footer`
     flex-direction: column;
   }
 
+  h4 {
+    align-self: center;
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: 400;
+    font-size: 1.3rem;
+  }
+
   .links {
     margin-top: 1rem;
     display: flex;
@@ -33,13 +47,6 @@ const FooterStyles = styled.footer`
 
     li {
       margin-left: 2rem;
-    }
-
-    h4 {
-      align-self: center;
-      font-family: 'Shadows Into Light', cursive;
-      font-weight: 400;
-      font-size: 1.3rem;
     }
 
     .links-container {
@@ -50,18 +57,43 @@ const FooterStyles = styled.footer`
     }
   }
 
+  .contact {
+    grid-column-start: var(--contact);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-item {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 0.5rem;
+
+    a:hover {
+      color: var(--pastel-green);
+    }
+  }
+
+  .contact-icon {
+    justify-self: center;
+  }
+
   @media (max-width: 1024px) and (min-width: 769px) {
     --columns: 2;
+    --contact: 0;
     padding: 1rem 4rem;
   }
 
   @media (max-width: 768px) {
     --columns: 1;
+    --contact: 0;
     padding: 1rem;
   }
 `;
 
-export default function Footer({ links }) {
+export default function Footer({ data }) {
   const footer = 'true';
   return (
     <FooterStyles>
@@ -92,8 +124,9 @@ export default function Footer({ links }) {
       <div className="links">
         <h4>Enlaces de Interés</h4>
         <div className="links-container">
-          {links &&
-            links.map(({ link, _id, title }) => (
+          {data &&
+            data.links &&
+            data.links.map(({ link, _id, title }) => (
               <li key={_id}>
                 <a
                   href={link}
@@ -107,6 +140,21 @@ export default function Footer({ links }) {
               </li>
             ))}
         </div>
+      </div>
+      <div className="contact">
+        <h4>Contactame</h4>
+        {data && data.phone && (
+          <div className="contact-item">
+            <FaPhoneAlt className="contact-icon" />
+            <a href={`tel:${data.phone}`}>{data.phone}</a>
+          </div>
+        )}
+        {data && data.email && (
+          <div className="contact-item">
+            <FaRegEnvelope className="contact-icon" />
+            <a href={`mailto:${data.email}`}>{data.email}</a>
+          </div>
+        )}
       </div>
     </FooterStyles>
   );

@@ -42,7 +42,6 @@ export default function useLatestPosts() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data.allPost);
         setPosts(res.data.allPost);
       });
   }, []);

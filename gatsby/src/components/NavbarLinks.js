@@ -38,13 +38,25 @@ const NavItem = styled(Link)`
   }
 `;
 
-export default function NavbarLinks() {
+export default function NavbarLinks({ onChange }) {
+  function handleClick() {
+    // Here, we invoke the callback with the new value
+    onChange();
+  }
   return (
     <>
-      <NavItem to="/">Inicio</NavItem>
-      <NavItem to="/blog">Blog</NavItem>
-      <NavItem to="/quien-es-marijo">Quien es Marijo</NavItem>
-      <NavItem to="/contacto">Contacto</NavItem>
+      <NavItem to="/" onClick={handleClick}>
+        Inicio
+      </NavItem>
+      <NavItem to="/blog" onClick={handleClick}>
+        Blog
+      </NavItem>
+      <NavItem to="/quien-es-marijo" onClick={handleClick}>
+        Quien es Marijo
+      </NavItem>
+      <NavItem to="/contacto" onClick={handleClick}>
+        Contacto
+      </NavItem>
     </>
   );
 }

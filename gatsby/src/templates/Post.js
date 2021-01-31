@@ -66,7 +66,7 @@ const PostStyles = styled.div`
       margin-top: 3rem;
       margin-bottom: 1rem;
       align-self: center;
-      width: 70%;
+      width: 100%;
     }
   }
 `;

@@ -82,12 +82,13 @@ const MainCard = styled.div`
 
     h4 {
       font-size: 1.1rem;
-      width: 18rem;
+      width: 70%;
     }
 
     h2 {
       font-size: 2rem;
       top: 35%;
+      width: 95%;
     }
   }
 `;

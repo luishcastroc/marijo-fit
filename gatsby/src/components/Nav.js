@@ -85,6 +85,10 @@ const Hamburger = styled.div`
 export default function Nav({ scrolled }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
+  function handleLinkClick() {
+    setNavbarOpen(!navbarOpen);
+  }
+
   return (
     <Navigation className={scrolled ? 'pos-sticky' : 'pos-absolute'}>
       <Logo />
@@ -100,7 +104,7 @@ export default function Nav({ scrolled }) {
         </Navbox>
       ) : (
         <Navbox open>
-          <NavbarLinks />
+          <NavbarLinks onChange={handleLinkClick} />
         </Navbox>
       )}
     </Navigation>

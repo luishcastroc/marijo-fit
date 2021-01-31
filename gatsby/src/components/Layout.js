@@ -3,12 +3,12 @@ import Nav from './Nav';
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 import Footer from './Footer';
-import useLatestLinks from '../utils/useLatestLinks';
+import useLatestData from '../utils/useLatestData';
 
 export default function Layout({ children }) {
   // determined if page has scrolled and if the view is on mobile
   const [scrolled, setScrolled] = useState(false);
-  const { links } = useLatestLinks();
+  const data = useLatestData();
 
   // change state on scroll
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Layout({ children }) {
       <Typography />
       <Nav scrolled={scrolled} />
       {children}
-      <Footer links={links} />
+      <Footer data={data} />
     </>
   );
 }

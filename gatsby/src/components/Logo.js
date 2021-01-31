@@ -18,7 +18,7 @@ export default function Logo({ footer }) {
     query {
       file(name: { eq: "logo" }, extension: { eq: "png" }) {
         childImageSharp {
-          fluid(pngQuality: 100, maxWidth: 280) {
+          fluid(quality: 100, maxWidth: 280) {
             ...GatsbyImageSharpFluid
           }
         }

@@ -41,6 +41,7 @@ const GlobalStyles = createGlobalStyle`
         }
     }
   }
+  
 
   .pos-absolute {
     position: absolute;
@@ -79,6 +80,18 @@ const GlobalStyles = createGlobalStyle`
       margin: 0 1rem;
       transform: translateY(-1rem);
       }
+  }
+
+  @media (max-width: 768px) {
+    .section-header {
+    font-size: 2rem;
+
+    &::before,
+    &::after {
+      width: 1.8rem;
+      transform: translateY(-0.4rem);
+      }
+  }
   }
   
 
