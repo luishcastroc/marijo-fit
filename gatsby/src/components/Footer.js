@@ -54,6 +54,7 @@ const FooterStyles = styled.footer`
       margin-top: 25px;
       display: grid;
       grid-template-columns: repeat(2, minmax(110px, 1fr));
+      gap: 1.5rem;
     }
   }
 
