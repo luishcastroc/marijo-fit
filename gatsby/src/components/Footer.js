@@ -16,10 +16,12 @@ const FooterStyles = styled.footer`
   background-color: var(--cape-cod);
   color: var(--white);
   display: grid;
-  --columns: 4;
+  --columns: ${(props) => (props.data ? 4 : 1)};
   --contact: 4;
   grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
   gap: 4rem;
+  ${(props) => (!props.data ? 'justify-items: center;' : '')}
+  ${(props) => (!props.data ? 'align-items: center;' : '')}
 
   a {
     :visited,
@@ -94,69 +96,77 @@ const FooterStyles = styled.footer`
   }
 `;
 
-export default function Footer({ data }) {
+export default function Footer({ data, location }) {
   const footer = 'true';
   return (
-    <FooterStyles>
-      <div className="general-info">
-        <Logo footer={footer} />
-        <ScrollAnimation
-          animateIn="flipInY"
-          offset={250}
-          animatePreScroll={false}
-        >
-          <p>
-            Tu transformación es mi pasión, dejame proveerte de las herramientas
-            para transformarte en la mejor versión de ti mismo, contactame y
-            podremos diseñar el programa perfecto que se acople a tus
-            necesidades.
-          </p>
-          <button
-            className="square"
-            type="button"
-            onClick={() => {
-              navigate('/contacto');
-            }}
-          >
-            Contactame
-          </button>
-        </ScrollAnimation>
-      </div>
-      <div className="links">
-        <h4>Enlaces de Interés</h4>
-        <div className="links-container">
-          {data &&
-            data.links &&
-            data.links.map(({ link, _id, title }) => (
-              <li key={_id}>
-                <a
-                  href={link}
-                  title={title}
-                  className="nutri-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {title}
-                </a>
-              </li>
-            ))}
+    <FooterStyles data={data}>
+      {!data && (
+        <div className="loading-circle">
+          <div className="inner-circle">Cargando...</div>
         </div>
-      </div>
-      <div className="contact">
-        <h4>Contactame</h4>
-        {data && data.phone && (
-          <div className="contact-item">
-            <FaPhoneAlt className="contact-icon" />
-            <a href={`tel:${data.phone}`}>{data.phone}</a>
+      )}
+      {data && (
+        <>
+          <div className="general-info">
+            <Logo footer={footer} />
+            <ScrollAnimation
+              animateIn="flipInY"
+              offset={250}
+              animatePreScroll={location.pathname !== '/'}
+            >
+              <p>
+                Tu transformación es mi pasión, dejame proveerte de las
+                herramientas para transformarte en la mejor versión de ti mismo,
+                contactame y podremos diseñar el programa perfecto que se acople
+                a tus necesidades.
+              </p>
+              <button
+                className="square"
+                type="button"
+                onClick={() => {
+                  navigate('/contacto');
+                }}
+              >
+                Contactame
+              </button>
+            </ScrollAnimation>
           </div>
-        )}
-        {data && data.email && (
-          <div className="contact-item">
-            <FaRegEnvelope className="contact-icon" />
-            <a href={`mailto:${data.email}`}>{data.email}</a>
+          <div className="links">
+            <h4>Enlaces de Interés</h4>
+            <div className="links-container">
+              {data.links &&
+                data.links.map(({ link, _id, title }) => (
+                  <li key={_id}>
+                    <a
+                      href={link}
+                      title={title}
+                      className="nutri-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {title}
+                    </a>
+                  </li>
+                ))}
+            </div>
           </div>
-        )}
-      </div>
+          <div className="contact">
+            <h4>Contactame</h4>
+            {data.phone && (
+              <div className="contact-item">
+                <FaPhoneAlt className="contact-icon" />
+                <a href={`tel:${data.phone}`}>{data.phone}</a>
+              </div>
+            )}
+            {data.email && (
+              <div className="contact-item">
+                <FaRegEnvelope className="contact-icon" />
+                <a href={`mailto:${data.email}`}>{data.email}</a>
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </FooterStyles>
   );
 }

@@ -5,7 +5,7 @@ import Typography from '../styles/Typography';
 import Footer from './Footer';
 import useLatestData from '../utils/useLatestData';
 
-export default function Layout({ children }) {
+export default function Layout({ children, location }) {
   // determined if page has scrolled and if the view is on mobile
   const [scrolled, setScrolled] = useState(false);
   const data = useLatestData();
@@ -35,7 +35,7 @@ export default function Layout({ children }) {
       <Typography />
       <Nav scrolled={scrolled} />
       {children}
-      <Footer data={data} />
+      <Footer data={data} location={location} />
     </>
   );
 }

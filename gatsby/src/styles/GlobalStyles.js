@@ -41,6 +41,45 @@ const GlobalStyles = createGlobalStyle`
         }
     }
   }
+
+  .loading-circle {
+    position: relative;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+
+    .inner-circle {
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-family: 'Shadows Into Light', cursive;
+      color: var(--white);
+      height: 100%;
+      width: 100%;
+      background-color: var(--cape-cod-70);
+    }
+      &:before {
+        position: absolute;
+        content: '';
+        height: calc(100% + 12px);
+        width: calc(100% + 12px);
+        border: 5px dashed var(--pastel-green);
+        top: -10px;
+        left: -11px;
+        border-radius: inherit;
+        animation: spin 10s linear infinite;
+      }
+
+    @keyframes spin {
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+  }
   
 
   .pos-absolute {
@@ -137,7 +176,7 @@ const GlobalStyles = createGlobalStyle`
         transition: 0.6s;
       }
     }
-  }
+}
 `;
 
 export default GlobalStyles;
