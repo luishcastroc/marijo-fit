@@ -32,6 +32,7 @@ const PaginationStyles = styled.div`
       display: none;
     }
     font-size: 1.4rem;
+    width: 70%;
   }
 `;
 

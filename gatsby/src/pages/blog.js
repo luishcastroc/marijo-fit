@@ -7,23 +7,38 @@ import { BlogGrid } from '../styles/Grids';
 import PostCard from '../components/PostCard';
 
 const BlogStyles = styled.div`
-  padding: 8rem 6rem 5rem;
-  height: 100%;
+  margin-top: 6rem;
+  padding: 0 6rem 5rem;
+  height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  ${(props) => (props.margin ? 'margin-bottom: 7rem;' : '')}
 
   .gatsby-image-wrapper {
     height: 250px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    margin-top: 6rem;
+    padding: 0;
+    height: 100%;
+    min-height: 100vh;
+  }
+
+  @media (max-width: 768px) {
+    --columns: 1;
+    margin-top: 8rem;
+    padding: 0;
+    height: 100%;
+    min-height: 100vh;
   }
 `;
 
 export default function Blog({ data, pageContext }) {
   const posts = data.posts.nodes;
   return (
-    <BlogStyles margin={data.posts.totalCount <= process.env.GATSBY_PAGE_SIZE}>
+    <BlogStyles>
       <SEO title={`Blog - Página ${pageContext.currentPage || 1}`} />
       <BlogGrid columns={process.env.GATSBY_PAGE_SIZE}>
         {posts.map((post) => (

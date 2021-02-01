@@ -14,6 +14,16 @@ export const BlogGrid = styled.div`
   gap: 2rem;
   align-content: center;
   justify-content: center;
+
+  @media (max-width: 1024px) and (min-width: 769px) {
+    padding: 0 4rem;
+  }
+
+  @media (max-width: 768px) {
+    --columns: 1;
+    height: 100%;
+    padding: 0 1rem;
+  }
 `;
 
 // Single Grid Item (for home page)
