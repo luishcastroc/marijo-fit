@@ -7,6 +7,7 @@ export const ItemsGrid = styled.div`
 `;
 
 export const BlogGrid = styled.div`
+  height: 550px;
   display: grid;
   --columns: ${({ columns }) => columns || 2};
   grid-template-columns: repeat(var(--columns), minmax(auto, 500px));

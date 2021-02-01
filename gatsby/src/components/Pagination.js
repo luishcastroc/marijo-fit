@@ -3,10 +3,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const PaginationStyles = styled.div`
+  width: 50%;
+  background-color: var(--cape-cod-70);
+  color: var(--white);
   display: flex;
-  align-content: center;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   border: 1px solid var(--grey);
   margin: 2rem 0;
   border-radius: 5px;
@@ -15,9 +17,10 @@ const PaginationStyles = styled.div`
     flex: 1;
     border-right: 1px solid var(--grey);
     text-decoration: none;
+    text-align: center;
     &[aria-current],
     &.current {
-      color: var(--red);
+      color: var(--pastel-green);
     }
     &[disabled] {
       pointer-events: none;

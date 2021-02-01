@@ -61,6 +61,7 @@ const FooterStyles = styled.footer`
   }
 
   .contact {
+    width: 290px;
     grid-column-start: var(--contact);
     margin-top: 1rem;
     margin-bottom: 2rem;

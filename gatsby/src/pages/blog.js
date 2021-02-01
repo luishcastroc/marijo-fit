@@ -8,14 +8,22 @@ import PostCard from '../components/PostCard';
 
 const BlogStyles = styled.div`
   padding: 8rem 6rem 5rem;
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  ${(props) => (props.margin ? 'margin-bottom: 7rem;' : '')}
+
+  .gatsby-image-wrapper {
+    height: 250px;
+  }
 `;
 
 export default function Blog({ data, pageContext }) {
-  console.log('data:', data);
   const posts = data.posts.nodes;
   return (
-    <BlogStyles>
+    <BlogStyles margin={data.posts.totalCount <= process.env.GATSBY_PAGE_SIZE}>
       <SEO title={`Blog - Página ${pageContext.currentPage || 1}`} />
       <BlogGrid columns={process.env.GATSBY_PAGE_SIZE}>
         {posts.map((post) => (
@@ -28,7 +36,7 @@ export default function Blog({ data, pageContext }) {
           totalCount={data.posts.totalCount}
           currentPage={pageContext.currentPage || 1}
           skip={pageContext.skip}
-          base="/posts"
+          base="/blog"
         />
       )}
     </BlogStyles>
