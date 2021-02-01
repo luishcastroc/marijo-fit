@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
 import { format, parseISO } from 'date-fns';
+import Img from 'gatsby-image';
 
 const PostCardStyles = styled.div`
   background-color: var(--white);
@@ -44,17 +45,20 @@ const PostCardStyles = styled.div`
   }
 `;
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, pagination = true }) {
   return (
     <PostCardStyles>
-      <img
-        src={`${post.mainImage.asset.url}?w=500&h=250&fit=crop`}
-        alt={post.title}
-        style={{
-          background: `url(${post.mainImage.asset.metadata.lqip})`,
-          backgroundSize: 'cover',
-        }}
-      />
+      {pagination && <Img fluid={post.mainImage.asset.fluid} />}
+      {!pagination && (
+        <img
+          src={`${post.mainImage.asset.url}?w=500&h=250&fit=crop`}
+          alt={post.title}
+          style={{
+            background: `url(${post.mainImage.asset.metadata.lqip})`,
+            backgroundSize: 'cover',
+          }}
+        />
+      )}
       <div className="card-body">
         <h4>{post.title}</h4>
         <sub>{format(parseISO(post.publishedAt), 'dd/MM/yyyy')}</sub>
@@ -62,7 +66,7 @@ export default function PostCard({ post }) {
         <button
           type="button"
           onClick={() => {
-            navigate(`/post/${post.slug.current}`);
+            navigate(`/blog/${post.slug.current}`);
           }}
         >
           Leer más...

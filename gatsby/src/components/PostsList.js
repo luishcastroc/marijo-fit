@@ -41,7 +41,9 @@ export default function PostsList({ posts }) {
         {!posts && <LoadingGrid count={2} />}
         {posts && !posts?.length && <p>No hay publicaciones</p>}
         {posts?.length &&
-          posts.map((post) => <PostCard post={post} key={post._id} />)}
+          posts.map((post) => (
+            <PostCard post={post} key={post._id} pagination={false} />
+          ))}
       </PostsListStyles>
     </>
   );

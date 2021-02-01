@@ -6,6 +6,15 @@ export const ItemsGrid = styled.div`
   gap: 2rem;
 `;
 
+export const BlogGrid = styled.div`
+  display: grid;
+  --columns: ${({ columns }) => columns || 2};
+  grid-template-columns: repeat(var(--columns), minmax(auto, 500px));
+  gap: 2rem;
+  align-content: center;
+  justify-content: center;
+`;
+
 // Single Grid Item (for home page)
 export const ItemStyles = styled.div`
   text-align: center;

@@ -6,6 +6,7 @@ async function turnPostsIntoPages({ graphql, actions }) {
   const { data } = await graphql(`
     query {
       posts: allSanityPost(sort: { fields: publishedAt, order: DESC }) {
+        totalCount
         nodes {
           _id
           title
@@ -17,11 +18,26 @@ async function turnPostsIntoPages({ graphql, actions }) {
     }
   `);
 
+  const pageSize = parseInt(process.env.GATSBY_PAGE_SIZE);
+  const pageCount = Math.ceil(data.posts.totalCount / pageSize);
+
   data.posts.nodes.forEach((post) => {
     actions.createPage({
-      path: `post/${post.slug.current}`,
+      path: `blog/${post.slug.current}`,
       component: postTemplate,
       context: { slug: post.slug.current },
+    });
+  });
+
+  Array.from({ length: pageCount }).forEach((_, i) => {
+    actions.createPage({
+      path: `/blog/${i + 1}`,
+      component: path.resolve('./src/pages/blog.js'),
+      context: {
+        skip: i * pageSize,
+        currentPage: i + 1,
+        pageSize,
+      },
     });
   });
 }
