@@ -40,12 +40,12 @@ const CardSectionStyles = styled.section`
   justify-items: center;
   position: relative;
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     --columns: 1;
     padding: 1rem;
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
     --columns: 2;
     padding: 3rem 4rem;
   }

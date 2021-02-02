@@ -16,7 +16,7 @@ const PostsListStyles = styled.section`
   align-content: center;
   justify-content: center;
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
     padding: 3rem 4rem;
   }
 

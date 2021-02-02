@@ -27,7 +27,7 @@ const PaginationStyles = styled.div`
       color: var(--grey);
     }
   }
-  @media (max-width: 800px) {
+  @media (max-width: 50rem) {
     .word {
       display: none;
     }

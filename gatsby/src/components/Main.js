@@ -15,7 +15,7 @@ const MainStyle = styled.main`
   display: flex;
   justify-content: center;
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
     padding: 8rem 4rem 10rem;
   }
 
@@ -58,7 +58,7 @@ const MainCard = styled.div`
     margin-top: 20px;
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.5rem) {
     padding: 0 6rem;
 
     h4 {
@@ -76,7 +76,7 @@ const MainCard = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     justify-content: flex-start;
     padding: 10rem 1rem;
 
@@ -89,6 +89,18 @@ const MainCard = styled.div`
       font-size: 2rem;
       top: 35%;
       width: 95%;
+    }
+
+    .button-container {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 23rem) {
+    padding: 6rem 1rem;
+
+    .button-container {
+      width: 100%;
     }
   }
 `;

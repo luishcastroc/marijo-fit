@@ -15,14 +15,32 @@ export const BlogGrid = styled.div`
   align-content: center;
   justify-content: center;
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
     padding: 0 4rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     --columns: 1;
     height: 100%;
     padding: 0 1rem;
+  }
+`;
+
+export const GoalsGrid = styled.div`
+  margin-top: 3rem;
+  display: grid;
+  --columns: 4;
+  grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
+  gap: 2rem;
+  align-content: center;
+  justify-items: center;
+
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
+    --columns: 2;
+  }
+
+  @media (max-width: 48rem) {
+    --columns: 1;
   }
 `;
 

@@ -42,7 +42,7 @@ const PostStyles = styled.div`
     width: 50%;
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
     padding: 8rem 3rem 5rem 3rem;
 
     h1 {

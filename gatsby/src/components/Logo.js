@@ -8,7 +8,7 @@ const LogoWrap = styled.div`
   ${(props) => (props.footer === 'true' ? '' : 'flex: 0 1 18rem')};
   width: 18rem;
 
-  @media (max-width: 768px) and (orientation: landscape) {
+  @media (max-width: 48rem) and (orientation: landscape) {
     flex: 0 1 11em;
     width: 16rem;
   }

@@ -9,8 +9,8 @@ import PostCard from '../components/PostCard';
 const BlogStyles = styled.div`
   margin-top: 6rem;
   padding: 0 6rem 5rem;
-  height: 100vh;
-  min-height: 100%;
+  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,16 +19,16 @@ const BlogStyles = styled.div`
     height: 250px;
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
     margin-top: 6rem;
     padding: 0;
     height: 100%;
     min-height: 100vh;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     --columns: 1;
-    margin-top: 8rem;
+    margin-top: 13rem;
     padding: 0;
     height: 100%;
     min-height: 100vh;

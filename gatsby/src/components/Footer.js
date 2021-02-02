@@ -33,6 +33,7 @@ const FooterStyles = styled.footer`
   .general-info {
     display: flex;
     flex-direction: column;
+    width: 15rem;
   }
 
   h4 {
@@ -46,22 +47,20 @@ const FooterStyles = styled.footer`
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
+    width: 13rem;
 
     li {
       margin-left: 2rem;
     }
 
     .links-container {
-      width: 400px;
-      margin-top: 25px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(110px, 1fr));
-      gap: 1.5rem;
+      margin-top: 1.6rem;
+      padding-left: 0.5rem;
     }
   }
 
   .contact {
-    width: 290px;
+    width: 18rem;
     grid-column-start: var(--contact);
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -84,16 +83,26 @@ const FooterStyles = styled.footer`
     justify-self: center;
   }
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
     --columns: 2;
     --contact: 0;
     padding: 1rem 4rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     --columns: 1;
     --contact: 0;
     padding: 1rem;
+
+    .general-info {
+      width: 20rem;
+    }
+  }
+
+  @media (max-width: 23rem) {
+    .general-info {
+      width: 16rem;
+    }
   }
 `;
 

@@ -121,7 +121,7 @@ const GlobalStyles = createGlobalStyle`
       }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     .section-header {
     font-size: 2rem;
 
@@ -130,12 +130,23 @@ const GlobalStyles = createGlobalStyle`
       width: 1.8rem;
       transform: translateY(-0.4rem);
       }
+    }
   }
+
+  @media (max-width: 23rem) {
+    .section-header {
+    font-size: 1.5rem;
+
+    &::before,
+    &::after {
+      width: 1.3rem;
+      transform: translateY(-0.4rem);
+      }
+    }
   }
   
 
   button {
-    max-width: 150px;
     font-family: 'Shadows Into Light', cursive;
     border-radius:25px;
     height: 50px;
@@ -145,7 +156,11 @@ const GlobalStyles = createGlobalStyle`
     border: none;
     color: var(--white);
     font-size: 1.2rem;
-    width: 150px;
+    width: 9.5rem;
+
+    @media (max-width: 23rem){
+      width: 7rem;
+    }
 
     &:hover{
       background-color: var(--cape-cod);

@@ -2,40 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Goal from './Goal';
+import { GoalsGrid } from '../styles/Grids';
 
 const GoalsStyles = styled.div`
   height: 500px;
   background-color: var(--cape-cod);
   padding: 4rem 6rem 3rem;
 
-  @media (max-width: 1024px) and (min-width: 769px) {
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
     --columns: 2;
     height: 100%;
     padding: 3rem 4rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     --columns: 1;
     height: 100%;
     padding: 6rem 1rem;
-  }
-`;
-
-const GoalsGrid = styled.div`
-  margin-top: 2rem;
-  display: grid;
-  --columns: 4;
-  grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
-  gap: 2rem;
-  align-content: center;
-  justify-items: center;
-
-  @media (max-width: 1024px) and (min-width: 769px) {
-    --columns: 2;
-  }
-
-  @media (max-width: 768px) {
-    --columns: 1;
   }
 `;
 

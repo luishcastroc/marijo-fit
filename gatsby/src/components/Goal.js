@@ -4,8 +4,8 @@ import bg from '../assets/images/circle-bg.jpg';
 
 const GoalStyles = styled.div`
   position: relative;
-  height: 15rem;
-  width: 15rem;
+  height: 13rem;
+  width: 13rem;
   background-image: url(${bg});
   border-radius: 50%;
 
@@ -16,7 +16,7 @@ const GoalStyles = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-family: 'Shadows Into Light', cursive;
     color: var(--white);
     height: 100%;
