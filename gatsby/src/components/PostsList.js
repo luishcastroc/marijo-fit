@@ -20,7 +20,7 @@ const PostsListStyles = styled.section`
     padding: 3rem 4rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     --columns: 1;
     height: 100%;
     padding: 1.5rem 1rem;

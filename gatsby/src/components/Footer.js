@@ -24,8 +24,7 @@ const FooterStyles = styled.footer`
   ${(props) => (!props.data ? 'align-items: center;' : '')}
 
   a {
-    :visited,
-    :active {
+    :hover {
       color: var(--pastel-green);
     }
   }

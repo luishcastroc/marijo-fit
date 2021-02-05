@@ -2,9 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import BlockContent from '@sanity/block-content-to-react';
 import SEO from '../components/SEO';
-
-const BlockContent = require('@sanity/block-content-to-react');
 
 const PostStyles = styled.div`
   height: 100%;
@@ -50,7 +49,7 @@ const PostStyles = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     padding: 8rem 3rem 5rem 3rem;
 
     h1 {

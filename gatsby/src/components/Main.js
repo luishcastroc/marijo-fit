@@ -19,7 +19,7 @@ const MainStyle = styled.main`
     padding: 8rem 4rem 10rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     padding: 8rem 1rem 3rem;
   }
 `;
