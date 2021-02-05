@@ -90,18 +90,10 @@ const MainCard = styled.div`
       top: 35%;
       width: 95%;
     }
-
-    .button-container {
-      width: 100%;
-    }
   }
 
   @media (max-width: 23rem) {
     padding: 6rem 1rem;
-
-    .button-container {
-      width: 100%;
-    }
   }
 `;
 
