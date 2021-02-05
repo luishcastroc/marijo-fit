@@ -8,7 +8,7 @@ import SEO from '../components/SEO';
 
 const WhoIsMarijoStyles = styled.div`
   margin-top: 7rem;
-  padding: 0 6rem 5rem;
+  padding: 0 10rem 5rem 10rem;
   height: 100%;
   min-height: 100vh;
   display: flex;
@@ -16,9 +16,7 @@ const WhoIsMarijoStyles = styled.div`
   align-items: center;
 
   h1 {
-    font-family: 'Shadows Into Light', cursive;
     font-size: 4.5rem;
-    color: var(--pastel-green);
     margin-bottom: 1rem;
   }
 
@@ -26,11 +24,42 @@ const WhoIsMarijoStyles = styled.div`
     display: grid;
     --columns: 2;
     grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
 
     .gatsby-image-wrapper {
       width: 35rem;
       height: auto;
+    }
+
+    @media (max-width: 64rem) and (min-width: 48.06rem) {
+      --columns: 1;
+      .gatsby-image-wrapper {
+        width: 100%;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 48rem) {
+      --columns: 1;
+      .gatsby-image-wrapper {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 64rem) and (min-width: 48.06rem) {
+    padding: 1rem;
+    h1 {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (max-width: 48rem) {
+    padding: 1rem;
+    h1 {
+      font-size: 2rem;
     }
   }
 `;
@@ -41,7 +70,7 @@ export default function WhoIsMarijo({ data: { marijo } }) {
       <SEO title="Quién es Marijo" />
       <WhoIsMarijoStyles>
         <ScrollAnimation animateIn="flipInY" offset={0} animatePreScroll>
-          <h1>Quién es Marijo</h1>
+          <h1 className="section-header">Quién es Marijo</h1>
         </ScrollAnimation>
         <div className="bio-container">
           <ScrollAnimation
@@ -54,7 +83,7 @@ export default function WhoIsMarijo({ data: { marijo } }) {
           </ScrollAnimation>
           <ScrollAnimation
             animateIn="flipInX"
-            delay={600}
+            delay={1000}
             offset={0}
             animatePreScroll
           >

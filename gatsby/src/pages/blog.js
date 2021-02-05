@@ -28,7 +28,7 @@ const BlogStyles = styled.div`
 
   @media (max-width: 48rem) {
     --columns: 1;
-    margin-top: 13rem;
+    margin-top: 8rem;
     padding: 0;
     height: 100%;
     min-height: 100vh;

@@ -23,6 +23,7 @@ export const BlogGrid = styled.div`
     --columns: 1;
     height: 100%;
     padding: 0 1rem;
+    margin-bottom: 1rem;
   }
 `;
 
