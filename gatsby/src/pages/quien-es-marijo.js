@@ -24,7 +24,7 @@ const WhoIsMarijoStyles = styled.div`
     display: grid;
     --columns: 2;
     grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
-    gap: 1.5rem;
+    gap: 1rem;
 
     .gatsby-image-wrapper {
       width: 35rem;
