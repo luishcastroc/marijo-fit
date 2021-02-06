@@ -8,21 +8,21 @@ export const ItemsGrid = styled.div`
 
 export const BlogGrid = styled.div`
   height: 550px;
+  padding: 0;
   display: grid;
   --columns: ${({ columns }) => columns || 2};
-  grid-template-columns: repeat(var(--columns), minmax(auto, 500px));
+  grid-template-columns: repeat(var(--columns), minmax(auto, 1fr));
   gap: 2rem;
   align-content: center;
-  justify-content: center;
-
-  @media (max-width: 64rem) and (min-width: 48.06rem) {
-    padding: 0 4rem;
-  }
+  justify-items: center;
 
   @media (max-width: 48rem) {
-    --columns: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
-    padding: 0 1rem;
+    width: 100%;
     margin-bottom: 1rem;
   }
 `;

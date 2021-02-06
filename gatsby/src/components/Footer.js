@@ -94,13 +94,13 @@ const FooterStyles = styled.footer`
     padding: 1rem;
 
     .general-info {
-      width: 20rem;
+      width: 100%;
     }
   }
 
   @media (max-width: 23rem) {
     .general-info {
-      width: 16rem;
+      width: 100%;
     }
   }
 `;

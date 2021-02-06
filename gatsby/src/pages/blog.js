@@ -5,31 +5,32 @@ import SEO from '../components/SEO';
 import Pagination from '../components/Pagination';
 import { BlogGrid } from '../styles/Grids';
 import PostCard from '../components/PostCard';
+import bg from '../assets/images/marijo-bg.jpg';
 
 const BlogStyles = styled.div`
-  margin-top: 6rem;
-  padding: 0 6rem 5rem;
+  padding: 8rem 6rem 5rem;
   height: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url('${bg}');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   .gatsby-image-wrapper {
     height: 250px;
   }
 
-  @media (max-width: 64rem) and (min-width: 48.06rem) {
-    margin-top: 6rem;
-    padding: 0;
+  @media (max-width: 64rem) {
+    padding: 8rem 3rem 1rem;
     height: 100%;
     min-height: 100vh;
   }
 
   @media (max-width: 48rem) {
-    --columns: 1;
-    margin-top: 8rem;
-    padding: 0;
+    padding: 7rem 1rem 1rem;
     height: 100%;
     min-height: 100vh;
   }

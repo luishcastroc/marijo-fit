@@ -43,6 +43,10 @@ const PostCardStyles = styled.div`
       align-self: center;
     }
   }
+
+  @media (max-width: 48rem) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export default function PostCard({ post, pagination = true }) {
