@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 
 const PostStyles = styled.div`
   height: 100%;
+  min-height: 100vh;
   padding: 8rem 10rem 5rem 10rem;
   display: flex;
   flex-direction: column;

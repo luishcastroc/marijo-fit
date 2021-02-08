@@ -10,7 +10,6 @@ const PostCardStyles = styled.div`
   box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.75);
   height: 480px;
   margin: 0 auto;
-  max-width: 500px;
   overflow: hidden;
   width: 100%;
   display: flex;
@@ -37,6 +36,7 @@ const PostCardStyles = styled.div`
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      min-height: 60px;
     }
 
     button {

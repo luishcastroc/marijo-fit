@@ -8,6 +8,7 @@ export const ItemsGrid = styled.div`
 
 export const BlogGrid = styled.div`
   height: 550px;
+  width: 100%;
   padding: 0;
   display: grid;
   --columns: ${({ columns }) => columns || 2};
