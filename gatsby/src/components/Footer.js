@@ -7,7 +7,9 @@ import {
   FaTwitter,
   FaFacebookF,
   FaPhoneAlt,
+  FaInstagram,
 } from 'react-icons/fa';
+import { ButtonStyles } from '../styles/Button';
 import Logo from './Logo';
 
 const FooterStyles = styled.footer`
@@ -82,6 +84,16 @@ const FooterStyles = styled.footer`
     justify-self: center;
   }
 
+  .social-networks {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 3rem;
+    padding: 0 1rem;
+  }
+
   @media (max-width: 64rem) and (min-width: 48.06rem) {
     --columns: 2;
     --contact: 0;
@@ -95,6 +107,10 @@ const FooterStyles = styled.footer`
 
     .general-info {
       width: 100%;
+    }
+
+    .social-networks {
+      justify-content: flex-start;
     }
   }
 
@@ -129,7 +145,7 @@ export default function Footer({ data, location }) {
                 contactame y podremos diseñar el programa perfecto que se acople
                 a tus necesidades.
               </p>
-              <button
+              <ButtonStyles
                 className="square"
                 type="button"
                 onClick={() => {
@@ -137,7 +153,7 @@ export default function Footer({ data, location }) {
                 }}
               >
                 Contactame
-              </button>
+              </ButtonStyles>
             </ScrollAnimation>
           </div>
           <div className="links">
@@ -171,6 +187,26 @@ export default function Footer({ data, location }) {
               <div className="contact-item">
                 <FaRegEnvelope className="contact-icon" />
                 <a href={`mailto:${data.email}`}>{data.email}</a>
+              </div>
+            )}
+            {data.socialnetworks && (
+              <div className="social-networks">
+                {data.socialnetworks.map(({ _id, type, user, link }) => {
+                  if (type === 'Instagram') {
+                    return (
+                      <a
+                        key={_id}
+                        href={link}
+                        title={user}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaInstagram />
+                      </a>
+                    );
+                  }
+                  return <div />;
+                })}
               </div>
             )}
           </div>

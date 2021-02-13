@@ -23,6 +23,12 @@ export default function useLatestData() {
               }
               email
               phone
+              socialnetworks {
+                _id
+                type
+                user
+                link
+              }
             }
           }
         `,

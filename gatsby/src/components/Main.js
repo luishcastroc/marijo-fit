@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 import { navigate } from 'gatsby';
 import bg from '../assets/images/bg.jpg';
+import { ButtonStyles } from '../styles/Button';
 
 const MainStyle = styled.main`
   padding: 8rem 6rem 5rem;
@@ -105,15 +106,15 @@ export default function Main() {
           <h4>Motivandote para tener un estilo de vida más saludable.</h4>
           <h2>Hola, Soy Marijo tu próxima Nutrióloga.</h2>
           <div className="button-container">
-            <button
+            <ButtonStyles
               type="button"
               onClick={() => {
                 navigate('/quien-es-marijo');
               }}
             >
               Conoce más
-            </button>
-            <button
+            </ButtonStyles>
+            <ButtonStyles
               className="secondary"
               type="button"
               onClick={() => {
@@ -121,7 +122,7 @@ export default function Main() {
               }}
             >
               Contacto
-            </button>
+            </ButtonStyles>
           </div>
         </ScrollAnimation>
       </MainCard>

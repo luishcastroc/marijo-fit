@@ -24,11 +24,20 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html,body {margin: 0; padding: 0;}
 
   html, body, #root {
     height: 100%;
   }
+
+  input, textarea, select { 
+    font-family:inherit; 
+    font-size: 1rem;
+    }
 
   strong {
     font-family: 'Raleway-Bold';
@@ -148,53 +157,6 @@ const GlobalStyles = createGlobalStyle`
       }
     }
   }
-  
-
-  button {
-    font-family: 'Shadows Into Light', cursive;
-    border-radius:25px;
-    height: 50px;
-    padding: .5rem;
-    cursor: pointer;
-    background-color: var(--pastel-green);
-    border: none;
-    color: var(--white);
-    font-size: 1.2rem;
-    width: 9.5rem;
-
-    @media (max-width: 23rem){
-      width: 7rem;
-    }
-
-    &:hover{
-      background-color: var(--cape-cod);
-      transition: 0.6s;
-    }
-
-    &.secondary{
-      background-color: transparent;
-      border: 2px solid var(--white);
-
-      &:hover {
-        background-color:white;
-        color: var(--cape-cod);
-        transition: 0.6s;
-      }
-    }
-
-    &.square{
-      background-color: transparent;
-      color: var(--pastel-green);
-      border: 1px solid var(--pastel-green);
-      border-radius:0px;
-
-
-      &:hover {
-        background-color:var(--pastel-green);
-        color: var(--white);
-        transition: 0.6s;
-      }
-    }
 }
 `;
 

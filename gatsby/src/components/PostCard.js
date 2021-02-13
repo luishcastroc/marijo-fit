@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { navigate } from 'gatsby';
 import { format, parseISO } from 'date-fns';
 import Img from 'gatsby-image';
+import { ButtonStyles } from '../styles/Button';
 
 const PostCardStyles = styled.div`
   background-color: var(--white);
@@ -67,14 +68,14 @@ export default function PostCard({ post, pagination = true }) {
         <h4>{post.title}</h4>
         <sub>{format(parseISO(post.publishedAt), 'dd/MM/yyyy')}</sub>
         <p>{post.subtitle}</p>
-        <button
+        <ButtonStyles
           type="button"
           onClick={() => {
             navigate(`/blog/${post.slug.current}`);
           }}
         >
           Leer más...
-        </button>
+        </ButtonStyles>
       </div>
     </PostCardStyles>
   );

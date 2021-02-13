@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 
 exports.handler = async (event, context) => {
   const info = await transporter.sendMail({
-    from: 'Contact Marijo Fit Life <marijo.fit.life@gmail.com>',
+    from: 'Contact Marijo Fit Life <contact@marijofitlife.com>',
     to: 'marijo.fit.life@gmail.com',
     subject: 'Contact Form',
     html: `<p>Testing Contact</p>`,
@@ -21,6 +21,6 @@ exports.handler = async (event, context) => {
 
   return {
     statusCode: 200,
-    body: info,
+    body: info.response,
   };
 };

@@ -24,7 +24,6 @@ const GoalStyles = styled.div`
     background-color: var(--cape-cod-70);
   }
 
-  &:hover {
     &:before {
       position: absolute;
       content: '';

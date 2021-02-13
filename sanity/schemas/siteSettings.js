@@ -46,5 +46,12 @@ export default {
       of: [{ type: "reference", to: [{ type: "link" }] }],
       validation: (Rule) => Rule.max(6),
     },
-  ],
+    {
+      name: "socialnetworks",
+      title: "Redes Sociales",
+      type: "array",
+      of: [{ type: "reference", to: [{ type: "social" }] }],
+      validation: (Rule) => Rule.max(3),
+    },
+  ]
 };
