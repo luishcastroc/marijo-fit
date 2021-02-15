@@ -43,6 +43,7 @@ export const GoalsGrid = styled.div`
 
   @media (max-width: 48rem) {
     --columns: 1;
+    gap: 3rem;
   }
 `;
 

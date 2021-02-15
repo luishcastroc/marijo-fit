@@ -57,6 +57,10 @@ const FooterStyles = styled.footer`
     .links-container {
       margin-top: 1.6rem;
       padding-left: 0.5rem;
+
+      li {
+        margin-bottom: 10px;
+      }
     }
   }
 
@@ -111,6 +115,11 @@ const FooterStyles = styled.footer`
 
     .social-networks {
       justify-content: flex-start;
+    }
+
+    .contact,
+    .links {
+      width: 100%;
     }
   }
 
