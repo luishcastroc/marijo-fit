@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 import { FiAlertTriangle } from 'react-icons/fi';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import bg from '../assets/images/marijo-bg.jpg';
 import SEO from '../components/SEO';
 import { ButtonStyles } from '../styles/Button';
@@ -78,12 +79,6 @@ const ContactStyles = styled.div`
         color: var(--white);
         margin-bottom: 0.5rem;
       }
-
-      .error-msg {
-        margin-top: 0.5rem;
-        display: grid;
-        grid-template-columns: 0.1fr 1.5fr;
-      }
     }
 
     button {
@@ -100,6 +95,35 @@ const ContactStyles = styled.div`
       justify-items: center;
       width: 100%;
     }
+  }
+
+  .error-msg {
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: 0.1fr 1.5fr;
+    align-items: center;
+    gap: 5px;
+
+    p {
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .error-container {
+    width: 100%;
+    background-color: red;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .success-msg {
+    color: var(--cape-cod);
+    background-color: var(--pastel-green);
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
   }
 
   @media (max-width: 64rem) {
@@ -164,8 +188,40 @@ export default function Contact() {
     mode: 'all',
     reValidateMode: 'onChange',
   });
-  const { isValid, isSubmitted } = formState;
-  const onSubmit = (data) => console.log('data:', data);
+  const { isValid, isSubmitted, isSubmitting } = formState;
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [error, setError] = useState();
+  const [message, setMessage] = useState('');
+
+  async function onSubmit({ name, email, phone, comment }) {
+    if (!executeRecaptcha) {
+      return;
+    }
+
+    const result = await executeRecaptcha('contacto');
+    const token = result; // --> grab the generated token by the reCAPTCHA
+    const data = { name, email, phone, comment, token };
+    const body = JSON.stringify(data);
+
+    const res = await fetch(
+      `${process.env.GATSBY_SERVERLESS_BASE}/sendContact`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+      }
+    );
+
+    const text = JSON.parse(await res.text());
+
+    if (res.status >= 400 && res.status < 600) {
+      reset();
+      setError(text.message);
+    } else {
+      reset();
+      setMessage('Mensaje Enviado!!');
+    }
+  }
 
   return (
     <>
@@ -175,6 +231,7 @@ export default function Contact() {
           <ScrollAnimation animateIn="flipInY" offset={0} animatePreScroll>
             <h4>Contactame y comencemos con tu vida saludable...</h4>
           </ScrollAnimation>
+          {message && <p className="success-msg">{message}</p>}
           <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
             <label htmlFor="name" className="field">
               <span>Nombre*</span>
@@ -198,6 +255,7 @@ export default function Contact() {
               <input
                 className="text-input"
                 type="text"
+                placeholder="user@account.com"
                 name="email"
                 id="email"
                 aria-invalid={errors.email ? 'true' : 'false'}
@@ -225,6 +283,7 @@ export default function Contact() {
                 className="text-input"
                 type="phone"
                 name="phone"
+                placeholder="(999)-123-1234"
                 id="phone"
                 aria-invalid={errors.phone ? 'true' : 'false'}
                 ref={register({
@@ -265,9 +324,23 @@ export default function Contact() {
                 </span>
               )}
             </label>
+            <div
+              aria-live="polite"
+              aria-atomic="true"
+              className="error-container"
+            >
+              {error ? (
+                <div className="error-msg">
+                  <FiAlertTriangle />
+                  <p>Error: {error}</p>
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
             <div className="buttons-container">
               <ButtonStyles type="submit" disabled={!isValid || isSubmitted}>
-                Enviar
+                {isSubmitting ? 'Enviando' : 'Enviar'}
               </ButtonStyles>
               <ButtonStyles type="button" className="secondary" onClick={reset}>
                 Limpiar

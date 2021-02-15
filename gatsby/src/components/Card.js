@@ -80,6 +80,7 @@ const CardStyles = styled.div`
       color: var(--white);
       flex: 1;
       text-align: center;
+      padding: 0 1rem;
 
       h3 {
         color: var(--pastel-green);
