@@ -9,21 +9,25 @@ const Typography = createGlobalStyle`
   @font-face {
     font-family: 'Raleway';
     src: url(${font});
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Raleway-Bold';
     src: url(${fontBold});
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Raleway-Medium';
     src: url(${fontMedium});
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Shadows Into Light', cursive;
     src: url(${fontShadow});
+    font-display: swap;
   }
 
   html {
