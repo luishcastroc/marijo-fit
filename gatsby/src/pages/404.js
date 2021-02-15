@@ -1,52 +1,51 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
+import bg from '../assets/images/marijo-bg.jpg';
 
-// styles
-const pageStyles = {
-  color: '#232129',
-  padding: '96px',
-  fontFamily: '-apple-system, Roboto, sans-serif, serif',
-};
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-};
+const PageStyles = styled.main`
+  padding: 8rem 10rem 5rem 10rem;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('${bg}');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-const paragraphStyles = {
-  marginBottom: 48,
-};
-const codeStyles = {
-  color: '#8A6534',
-  padding: 4,
-  backgroundColor: '#FFF4DB',
-  fontSize: '1.25rem',
-  borderRadius: 4,
-};
+  .container {
+    background-color: var(--cape-cod-70);
+    color: var(--white);
+    padding: 2rem;
+  }
+
+  @media (max-width: 48rem) {
+    padding: 8rem 1rem 5rem 1rem;
+  }
+`;
 
 // markup
 const NotFoundPage = () => (
-  <main style={pageStyles}>
-    <title>Not found</title>
-    <h1 style={headingStyles}>Page not found</h1>
-    <p style={paragraphStyles}>
-      Sorry{' '}
-      <span role="img" aria-label="Pensive emoji">
-        😔
-      </span>{' '}
-      we couldn’t find what you were looking for.
-      <br />
-      {process.env.NODE_ENV === 'development' ? (
-        <>
-          <br />
-          Try creating a page in <code style={codeStyles}>src/pages/</code>.
-          <br />
-        </>
-      ) : null}
-      <br />
-      <Link to="/">Go home</Link>.
-    </p>
-  </main>
+  <PageStyles>
+    <div className="container">
+      <title>No Encontrada</title>
+      <h1>Pagina no encontrada</h1>
+      <p>
+        Lo Siento{' '}
+        <span role="img" aria-label="Pensive emoji">
+          😔
+        </span>{' '}
+        No pudimos encontrar la página que buscabas.
+        <br />
+        <strong>
+          <Link to="/">ir a Inicio.</Link>
+        </strong>
+        .
+      </p>
+    </div>
+  </PageStyles>
 );
 
 export default NotFoundPage;
