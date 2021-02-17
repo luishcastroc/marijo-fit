@@ -34,6 +34,7 @@ export default function PostsList({ posts }) {
         animateIn="flipInY"
         offset={250}
         animatePreScroll={false}
+        animateOnce
       >
         <h2 className="section-header">Publicaciones</h2>
       </ScrollAnimation>

@@ -90,7 +90,12 @@ export default function WhoIsMarijo({ data: { marijo } }) {
       <SEO title="Quién es Marijo" />
       <WhoIsMarijoStyles>
         <div className="container">
-          <ScrollAnimation animateIn="flipInY" offset={0} animatePreScroll>
+          <ScrollAnimation
+            animateIn="flipInY"
+            offset={0}
+            animatePreScroll
+            animateOnce
+          >
             <h1 className="section-header">Quién es Marijo</h1>
           </ScrollAnimation>
           <div className="bio-container">
@@ -99,6 +104,7 @@ export default function WhoIsMarijo({ data: { marijo } }) {
               delay={600}
               offset={0}
               animatePreScroll
+              animateOnce
             >
               <Img fluid={marijo.image.asset.fluid} alt={`${marijo.name}`} />
             </ScrollAnimation>
@@ -107,6 +113,7 @@ export default function WhoIsMarijo({ data: { marijo } }) {
               delay={1000}
               offset={0}
               animatePreScroll
+              animateOnce
             >
               <BlockContent blocks={marijo.bio} />
             </ScrollAnimation>

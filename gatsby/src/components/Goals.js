@@ -36,6 +36,7 @@ export default function Goals() {
         animateIn="flipInY"
         offset={250}
         animatePreScroll={false}
+        animateOnce
       >
         <h2 className="section-header">Como funciona?</h2>
       </ScrollAnimation>

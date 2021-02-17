@@ -33,5 +33,13 @@ export default {
       },
       __key: 'images',
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'bgimages',
+        path: './src/assets/images',
+      },
+      __key: 'bgimages',
+    },
   ],
 };

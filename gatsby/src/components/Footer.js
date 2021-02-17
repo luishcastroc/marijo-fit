@@ -145,6 +145,7 @@ export default function Footer({ data, location }) {
             <Logo footer={footer} />
             <ScrollAnimation
               animateIn="flipInY"
+              animateOnce
               offset={250}
               animatePreScroll={location.pathname !== '/'}
             >

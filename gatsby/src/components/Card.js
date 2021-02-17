@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import wbg from '../assets/images/cards/white-bg.jpg';
+import BackgroundImage from 'gatsby-background-image';
 
-const CardStyles = styled.div`
+const CardStyles = styled(BackgroundImage)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,6 @@ const CardStyles = styled.div`
   width: 100%;
   height: 370px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-image: url(${(props) => (props.bgImg ? props.bgImg : wbg)});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -111,7 +110,7 @@ const CardStyles = styled.div`
 
 export default function Card({ card }) {
   return (
-    <CardStyles bgImg={card.bgImg}>
+    <CardStyles Tag="div" fluid={card.bgImg}>
       <div className="info-container">
         <div className="img-container">
           <img src={card.img} alt={card.title} />

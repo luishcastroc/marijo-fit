@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
-import { navigate } from 'gatsby';
-import bg from '../assets/images/bg.jpg';
+import { graphql, navigate, useStaticQuery } from 'gatsby';
+import BackgroundImage from 'gatsby-background-image';
 import { ButtonStyles } from '../styles/Button';
 
-const MainStyle = styled.main`
+const MainStyle = styled(BackgroundImage)`
   padding: 8rem 6rem 5rem;
   height: 100%;
   width: 100%;
-  background-image: url('${bg}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -99,10 +98,22 @@ const MainCard = styled.div`
 `;
 
 export default function Main() {
+  const { image } = useStaticQuery(graphql`
+    query {
+      image: file(relativePath: { eq: "bg.jpg" }) {
+        sharp: childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `);
+
   return (
-    <MainStyle>
+    <MainStyle Tag="main" fluid={image.sharp.fluid}>
       <MainCard>
-        <ScrollAnimation animateIn="bounceInRight">
+        <ScrollAnimation animateIn="bounceInRight" animateOnce>
           <h4>Motivandote para tener un estilo de vida más saludable.</h4>
           <h2>Hola, Soy Marijo tu próxima Nutrióloga.</h2>
           <div className="button-container">

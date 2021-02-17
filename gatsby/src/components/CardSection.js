@@ -1,32 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { graphql, useStaticQuery } from 'gatsby';
 import Card from './Card';
-import { Images } from '../utils/Images';
-
-const Cards = [
-  {
-    title: 'Nutrición Personalizada',
-    img: Images.personal,
-    bgImg: Images.personalBg,
-    description:
-      'La nutrición personalizada se enfoca en individualizar la dieta de cada persona para así, lograr que satisfaga sus necesidades específicas dependiendo de factores como: su salud, su estilo de vida, sus objetivos personales, etc… ',
-  },
-  {
-    title: 'Planes de Alimentación',
-    img: Images.diet,
-    bgImg: Images.dietBg,
-    description:
-      'Te proporcionamos un plan para controlar la ingestión de alimentos a fin de suplir las reales necesidades del organismo basado en tus metas',
-  },
-  {
-    title: 'Tratamientos Corporales',
-    img: Images.relax,
-    bgImg: Images.relaxBg,
-    description:
-      'Muchas veces a pesar de las dietas y ejercicio cuesta bajar esos “rollitos”, que tanto nos molestan. Este tratamiento está enfocado a eliminar grasas localizadas, para disminuir el contorno y centímetros de la zona a tratar.',
-  },
-];
 
 const CardSectionStyles = styled.section`
   width: 100%;
@@ -62,18 +38,49 @@ const CardSectionStyles = styled.section`
   }
 `;
 
-export default function CardSection() {
+export default function CardSection({ cards }) {
+  const { personalBg, dietBg, relaxBg } = useStaticQuery(graphql`
+    query {
+      personalBg: file(relativePath: { eq: "cards/personal-bg.jpg" }) {
+        sharp: childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      dietBg: file(relativePath: { eq: "cards/diet-bg.jpg" }) {
+        sharp: childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      relaxBg: file(relativePath: { eq: "cards/relax-bg.jpg" }) {
+        sharp: childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `);
+
+  cards[0] = { ...cards[0], bgImg: personalBg.sharp.fluid };
+  cards[1] = { ...cards[1], bgImg: dietBg.sharp.fluid };
+  cards[2] = { ...cards[2], bgImg: relaxBg.sharp.fluid };
+
   return (
     <>
       <ScrollAnimation
         animateIn="flipInY"
         offset={250}
         animatePreScroll={false}
+        animateOnce
       >
         <h2 className="section-header">Servicios</h2>
       </ScrollAnimation>
       <CardSectionStyles>
-        {Cards.map((card) => (
+        {cards.map((card) => (
           <Card card={card} key={card.title} />
         ))}
       </CardSectionStyles>

@@ -228,7 +228,12 @@ export default function Contact() {
       <SEO title="Contacto" />
       <ContactStyles>
         <div className="form-container">
-          <ScrollAnimation animateIn="flipInY" offset={0} animatePreScroll>
+          <ScrollAnimation
+            animateIn="flipInY"
+            offset={0}
+            animatePreScroll
+            animateOnce
+          >
             <h4>Contactame y comencemos con tu vida saludable...</h4>
           </ScrollAnimation>
           {message && <p className="success-msg">{message}</p>}
