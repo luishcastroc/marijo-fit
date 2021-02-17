@@ -1,20 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import BackgroundImage from 'gatsby-background-image';
 import SEO from '../components/SEO';
 import Pagination from '../components/Pagination';
 import { BlogGrid } from '../styles/Grids';
 import PostCard from '../components/PostCard';
-import bg from '../assets/images/marijo-bg.jpg';
 
-const BlogStyles = styled.div`
+const BlogStyles = styled(BackgroundImage)`
   padding: 8rem 6rem 5rem;
   height: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('${bg}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -38,8 +37,9 @@ const BlogStyles = styled.div`
 
 export default function Blog({ data, pageContext }) {
   const posts = data.posts.nodes;
+  const bg = data.image;
   return (
-    <BlogStyles>
+    <BlogStyles Tag="div" fluid={bg.sharp.fluid}>
       <SEO title={`Blog - Página ${pageContext.currentPage || 1}`} />
       <BlogGrid columns={process.env.GATSBY_PAGE_SIZE}>
         {posts.map((post) => (
@@ -78,6 +78,13 @@ export const query = graphql`
           }
         }
         publishedAt
+      }
+    }
+    image: file(relativePath: { eq: "marijo-bg.jpg" }) {
+      sharp: childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
       }
     }
   }

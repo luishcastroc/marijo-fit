@@ -4,17 +4,16 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import ScrollAnimation from 'react-animate-on-scroll';
 import BlockContent from '@sanity/block-content-to-react';
+import BackgroundImage from 'gatsby-background-image';
 import SEO from '../components/SEO';
-import bg from '../assets/images/marijo-bg.jpg';
 
-const WhoIsMarijoStyles = styled.div`
+const WhoIsMarijoStyles = styled(BackgroundImage)`
   padding: 8rem 10rem 5rem 10rem;
   height: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('${bg}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -84,43 +83,42 @@ const WhoIsMarijoStyles = styled.div`
   }
 `;
 
-export default function WhoIsMarijo({ data: { marijo } }) {
+export default function WhoIsMarijo({ data: { marijo, image } }) {
   return (
-    <>
+    <WhoIsMarijoStyles Tag="div" fluid={image.sharp.fluid}>
       <SEO title="Quién es Marijo" />
-      <WhoIsMarijoStyles>
-        <div className="container">
+      <div className="container">
+        <ScrollAnimation
+          animateIn="flipInY"
+          delay={300}
+          offset={0}
+          animatePreScroll
+          animateOnce
+        >
+          <h1 className="section-header">Quién es Marijo</h1>
+        </ScrollAnimation>
+        <div className="bio-container">
           <ScrollAnimation
-            animateIn="flipInY"
+            animateIn="flipInX"
+            delay={600}
             offset={0}
             animatePreScroll
             animateOnce
           >
-            <h1 className="section-header">Quién es Marijo</h1>
+            <Img fluid={marijo.image.asset.fluid} alt={`${marijo.name}`} />
           </ScrollAnimation>
-          <div className="bio-container">
-            <ScrollAnimation
-              animateIn="flipInX"
-              delay={600}
-              offset={0}
-              animatePreScroll
-              animateOnce
-            >
-              <Img fluid={marijo.image.asset.fluid} alt={`${marijo.name}`} />
-            </ScrollAnimation>
-            <ScrollAnimation
-              animateIn="flipInX"
-              delay={1000}
-              offset={0}
-              animatePreScroll
-              animateOnce
-            >
-              <BlockContent blocks={marijo.bio} />
-            </ScrollAnimation>
-          </div>
+          <ScrollAnimation
+            animateIn="flipInX"
+            delay={1000}
+            offset={0}
+            animatePreScroll
+            animateOnce
+          >
+            <BlockContent blocks={marijo.bio} />
+          </ScrollAnimation>
         </div>
-      </WhoIsMarijoStyles>
-    </>
+      </div>
+    </WhoIsMarijoStyles>
   );
 }
 
@@ -135,6 +133,13 @@ export const query = graphql`
           fluid(maxWidth: 1000) {
             ...GatsbySanityImageFluid
           }
+        }
+      }
+    }
+    image: file(relativePath: { eq: "marijo-bg.jpg" }) {
+      sharp: childImageSharp {
+        fluid(quality: 90, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

@@ -28,7 +28,10 @@ const GlobalStyles = createGlobalStyle`
     scroll-behavior: smooth;
   }
 
-  html,body {margin: 0; padding: 0;}
+  html,body {
+    margin: 0; 
+    padding: 0;
+  }
 
   html, body, #root {
     height: 100%;
@@ -37,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
   input, textarea, select { 
     font-family:inherit; 
     font-size: 1rem;
-    }
+  }
 
   strong {
     font-family: 'Raleway-Bold';
@@ -46,13 +49,13 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: var(--white);
-    
-    &[aria-current='page'] {
-      color: var(--pastel-green);
-      ::after {
-        width: 100%;
-        }
-    }
+  }
+
+  .link-active {
+    color: var(--pastel-green);
+    ::after {
+      width: 100%;
+      }
   }
 
   .loading-circle {
@@ -136,28 +139,27 @@ const GlobalStyles = createGlobalStyle`
 
   @media (max-width: 48rem) {
     .section-header {
-    font-size: 2rem;
+      font-size: 2rem;
 
-    &::before,
-    &::after {
-      width: 1.8rem;
-      transform: translateY(-0.4rem);
-      }
+      &::before,
+      &::after {
+        width: 1.8rem;
+        transform: translateY(-0.4rem);
+        }
     }
   }
 
   @media (max-width: 23rem) {
     .section-header {
-    font-size: 1.5rem;
+      font-size: 1.5rem;
 
-    &::before,
-    &::after {
-      width: 1.3rem;
-      transform: translateY(-0.4rem);
-      }
+      &::before,
+      &::after {
+        width: 1.3rem;
+        transform: translateY(-0.4rem);
+        }
     }
   }
-}
 `;
 
 export default GlobalStyles;

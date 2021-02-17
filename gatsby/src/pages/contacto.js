@@ -4,18 +4,18 @@ import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import bg from '../assets/images/marijo-bg.jpg';
+import BackgroundImage from 'gatsby-background-image';
+import { graphql, useStaticQuery } from 'gatsby';
 import SEO from '../components/SEO';
 import { ButtonStyles } from '../styles/Button';
 
-const ContactStyles = styled.div`
+const ContactStyles = styled(BackgroundImage)`
   padding: 8rem 12rem 5rem;
   min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('${bg}');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -184,6 +184,17 @@ const ContactStyles = styled.div`
 `;
 
 export default function Contact() {
+  const { image } = useStaticQuery(graphql`
+    query {
+      image: file(relativePath: { eq: "marijo-bg.jpg" }) {
+        sharp: childImageSharp {
+          fluid(quality: 90, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+    }
+  `);
   const { register, handleSubmit, errors, formState, reset } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
@@ -224,136 +235,134 @@ export default function Contact() {
   }
 
   return (
-    <>
+    <ContactStyles Tag="main" fluid={image.sharp.fluid}>
       <SEO title="Contacto" />
-      <ContactStyles>
-        <div className="form-container">
-          <ScrollAnimation
-            animateIn="flipInY"
-            offset={0}
-            animatePreScroll
-            animateOnce
+      <div className="form-container">
+        <ScrollAnimation
+          animateIn="flipInY"
+          offset={0}
+          animatePreScroll
+          animateOnce
+        >
+          <h4>Contactame y comencemos con tu vida saludable...</h4>
+        </ScrollAnimation>
+        {message && <p className="success-msg">{message}</p>}
+        <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
+          <label htmlFor="name" className="field">
+            <span>Nombre*</span>
+            <input
+              className="text-input"
+              type="text"
+              name="name"
+              id="name"
+              aria-invalid={errors.name ? 'true' : 'false'}
+              ref={register({ required: true })}
+            />
+            {errors.name && (
+              <span role="alert" className="error-msg">
+                <FiAlertTriangle />
+                Este campo es requerido.
+              </span>
+            )}
+          </label>
+          <label htmlFor="email" className="field">
+            <span>Correo electrónico*</span>
+            <input
+              className="text-input"
+              type="text"
+              placeholder="user@account.com"
+              name="email"
+              id="email"
+              aria-invalid={errors.email ? 'true' : 'false'}
+              ref={register({
+                required: true,
+                pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              })}
+            />
+            {errors.email?.type === 'pattern' && (
+              <span role="alert" className="error-msg">
+                <FiAlertTriangle />
+                Correo inválido.
+              </span>
+            )}
+            {errors.email?.type === 'required' && (
+              <span role="alert" className="error-msg">
+                <FiAlertTriangle />
+                Este campo es requerido.
+              </span>
+            )}
+          </label>
+          <label htmlFor="phone" className="field">
+            <span>Teléfono*</span>
+            <input
+              className="text-input"
+              type="phone"
+              name="phone"
+              placeholder="(999)-123-1234"
+              id="phone"
+              aria-invalid={errors.phone ? 'true' : 'false'}
+              ref={register({
+                required: true,
+                pattern: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/,
+              })}
+            />
+            {errors.phone?.type === 'pattern' && (
+              <span role="alert" className="error-msg">
+                <FiAlertTriangle />
+                Teléfono inválido.
+              </span>
+            )}
+            {errors.phone?.type === 'required' && (
+              <span role="alert" className="error-msg">
+                <FiAlertTriangle />
+                Este campo es requerido.
+              </span>
+            )}
+          </label>
+          <label htmlFor="comment" className="field">
+            <span>Comentario*</span>
+            <textarea
+              className="text-input-area"
+              name="comment"
+              rows="4"
+              cols="50"
+              id="comment"
+              aria-invalid={errors.comment ? 'true' : 'false'}
+              ref={register({
+                required: true,
+              })}
+            />
+            {errors.comment && (
+              <span role="alert" className="error-msg">
+                <FiAlertTriangle />
+                Este campo es requerido.
+              </span>
+            )}
+          </label>
+          <div
+            aria-live="polite"
+            aria-atomic="true"
+            className="error-container"
           >
-            <h4>Contactame y comencemos con tu vida saludable...</h4>
-          </ScrollAnimation>
-          {message && <p className="success-msg">{message}</p>}
-          <form onSubmit={handleSubmit(onSubmit)} className="contact-form">
-            <label htmlFor="name" className="field">
-              <span>Nombre*</span>
-              <input
-                className="text-input"
-                type="text"
-                name="name"
-                id="name"
-                aria-invalid={errors.name ? 'true' : 'false'}
-                ref={register({ required: true })}
-              />
-              {errors.name && (
-                <span role="alert" className="error-msg">
-                  <FiAlertTriangle />
-                  Este campo es requerido.
-                </span>
-              )}
-            </label>
-            <label htmlFor="email" className="field">
-              <span>Correo electrónico*</span>
-              <input
-                className="text-input"
-                type="text"
-                placeholder="user@account.com"
-                name="email"
-                id="email"
-                aria-invalid={errors.email ? 'true' : 'false'}
-                ref={register({
-                  required: true,
-                  pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                })}
-              />
-              {errors.email?.type === 'pattern' && (
-                <span role="alert" className="error-msg">
-                  <FiAlertTriangle />
-                  Correo inválido.
-                </span>
-              )}
-              {errors.email?.type === 'required' && (
-                <span role="alert" className="error-msg">
-                  <FiAlertTriangle />
-                  Este campo es requerido.
-                </span>
-              )}
-            </label>
-            <label htmlFor="phone" className="field">
-              <span>Teléfono*</span>
-              <input
-                className="text-input"
-                type="phone"
-                name="phone"
-                placeholder="(999)-123-1234"
-                id="phone"
-                aria-invalid={errors.phone ? 'true' : 'false'}
-                ref={register({
-                  required: true,
-                  pattern: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/,
-                })}
-              />
-              {errors.phone?.type === 'pattern' && (
-                <span role="alert" className="error-msg">
-                  <FiAlertTriangle />
-                  Teléfono inválido.
-                </span>
-              )}
-              {errors.phone?.type === 'required' && (
-                <span role="alert" className="error-msg">
-                  <FiAlertTriangle />
-                  Este campo es requerido.
-                </span>
-              )}
-            </label>
-            <label htmlFor="comment" className="field">
-              <span>Comentario*</span>
-              <textarea
-                className="text-input-area"
-                name="comment"
-                rows="4"
-                cols="50"
-                id="comment"
-                aria-invalid={errors.comment ? 'true' : 'false'}
-                ref={register({
-                  required: true,
-                })}
-              />
-              {errors.comment && (
-                <span role="alert" className="error-msg">
-                  <FiAlertTriangle />
-                  Este campo es requerido.
-                </span>
-              )}
-            </label>
-            <div
-              aria-live="polite"
-              aria-atomic="true"
-              className="error-container"
-            >
-              {error ? (
-                <div className="error-msg">
-                  <FiAlertTriangle />
-                  <p>Error: {error}</p>
-                </div>
-              ) : (
-                ''
-              )}
-            </div>
-            <div className="buttons-container">
-              <ButtonStyles type="submit" disabled={!isValid || isSubmitted}>
-                {isSubmitting ? 'Enviando' : 'Enviar'}
-              </ButtonStyles>
-              <ButtonStyles type="button" className="secondary" onClick={reset}>
-                Limpiar
-              </ButtonStyles>
-            </div>
-          </form>
-        </div>
-      </ContactStyles>
-    </>
+            {error ? (
+              <div className="error-msg">
+                <FiAlertTriangle />
+                <p>Error: {error}</p>
+              </div>
+            ) : (
+              ''
+            )}
+          </div>
+          <div className="buttons-container">
+            <ButtonStyles type="submit" disabled={!isValid || isSubmitted}>
+              {isSubmitting ? 'Enviando' : 'Enviar'}
+            </ButtonStyles>
+            <ButtonStyles type="button" className="secondary" onClick={reset}>
+              Limpiar
+            </ButtonStyles>
+          </div>
+        </form>
+      </div>
+    </ContactStyles>
   );
 }

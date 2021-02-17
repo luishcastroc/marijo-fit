@@ -45,16 +45,24 @@ export default function NavbarLinks({ onChange }) {
   }
   return (
     <>
-      <NavItem to="/" onClick={handleClick}>
+      <NavItem to="/" onClick={handleClick} activeClassName="link-active">
         Inicio
       </NavItem>
-      <NavItem to="/blog" onClick={handleClick}>
+      <NavItem to="/blog/" onClick={handleClick} activeClassName="link-active">
         Blog
       </NavItem>
-      <NavItem to="/quien-es-marijo" onClick={handleClick}>
+      <NavItem
+        to="/quien-es-marijo/"
+        onClick={handleClick}
+        activeClassName="link-active"
+      >
         Quien es Marijo
       </NavItem>
-      <NavItem to="/contacto" onClick={handleClick}>
+      <NavItem
+        to="/contacto/"
+        onClick={handleClick}
+        activeClassName="link-active"
+      >
         Contacto
       </NavItem>
     </>
