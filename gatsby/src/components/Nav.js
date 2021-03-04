@@ -15,7 +15,7 @@ const Navigation = styled.nav`
   z-index: 2;
   align-self: center;
 
-  @media (max-width: 49rem) {
+  @media (max-width: 48rem) {
     height: 90px;
   }
 `;
